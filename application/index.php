@@ -35,17 +35,6 @@
 
             var iss_value = iss_less60 + ',' + iss_less50 + ',' + iss_less40 + ',' + iss_less30 + ',' + iss_less20 + ',' + iss_less10 + ',' + exact_timestamp + ',' + iss_more10 + ',' + iss_more20 + ',' + iss_more30 + ',' + iss_more40 + ',' + iss_more50 + ',' + iss_more60;
 
-            //GET API ISS
-            // var req = new XMLHttpRequest();
-            // req.open('GET', 'https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps='+iss_value+'&units=miles', false);
-            
-            // req.send(null);
-            
-            // document.getElementById("demo").innerHTML = req.responseText
-            // //GET API ISS
-
-            // var result = req.responseText;
-
             $( document ).ready(function() {
                 $.ajax({
                     'url': 'https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps='+iss_value+'&units=miles',
@@ -309,59 +298,6 @@
                         var date10 = new Date(JSON.stringify(response[9]['timestamp'])*1000)
                         var date11 = new Date(JSON.stringify(response[10]['timestamp'])*1000)
                         var date12 = new Date(JSON.stringify(response[11]['timestamp'])*1000)
-
-                       
-                        var time = date1.slice(-8);
-
-                        console.log(time);
-
-
-                        google.charts.load('current', {packages: ['corechart', 'line']});
-                        google.charts.setOnLoadCallback(drawCrosshairs);
-
-                        function drawCrosshairs() {
-                            var data = new google.visualization.DataTable();
-                            data.addColumn('number', 'X');
-                            data.addColumn('number', 'Time');
-
-                            data.addRows([
-
-                                // for($i = 0; $i )
-                                [0, 0],   
-                                [1, 10],   
-                                [2, 2], 
-                            ]);
-
-                            var options = {
-                                hAxis: {
-                                    title: 'Time'
-                                },
-                                vAxis: {
-                                    title: 'Popularity'
-                                },
-                                colors: ['#a52714', '#097138'],
-                                crosshair: {
-                                    color: '#000',
-                                    trigger: 'selection'
-                                }
-                            };
-
-                            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-                            chart.draw(data, options);
-                            chart.setSelection([{row: 38, column: 1}]);
-
-                            }
-
-
-
-
-
-
-
-
-
-
 
 
                     }
